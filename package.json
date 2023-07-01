@@ -1,0 +1,67 @@
+{
+  "name": "transX",
+  "displayName": "transX",
+  "keywords": [
+    "翻译X",
+    "transX",
+    "翻译"
+  ],
+  "publisher": "Saraph1nes",
+  "description": "A very handy translation plugin",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "translatex.translate",
+        "title": "翻译"
+      },
+      {
+        "command": "translatex.translateAndReplace",
+        "title": "翻译并替换"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "translatex.translate",
+          "group": "navigation",
+          "when": "editorTextFocus && editorHasSelection"
+        },
+        {
+          "command": "translatex.translateAndReplace",
+          "group": "navigation",
+          "when": "editorTextFocus && editorHasSelection"
+        }
+      ]
+    }
+  },
+  "enabledApiProposals": [
+    "contribEditorContentMenu"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.54.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Saraph1nes/vscode-transX.git"
+  }
+}

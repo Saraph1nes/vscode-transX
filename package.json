@@ -15,6 +15,30 @@
   "categories": [],
   "main": "./extension.js",
   "contributes": {
+    "configuration": {
+      "title": "translation",
+      "properties": {
+        "translation.engine": {
+          "type": "string",
+          "default": "有道翻译",
+          "enum": [
+            "有道翻译",
+            "微软翻译"
+          ],
+          "description": "选择翻译引擎"
+        },
+        "translation.engine.translationId": {
+          "type": "string",
+          "default": "",
+          "description": "应用ID"
+        },
+        "translation.engine.translationKey": {
+          "type": "string",
+          "default": "",
+          "description": "应用秘钥"
+        }
+      }
+    },
     "commands": [
       {
         "command": "translatex.translate",

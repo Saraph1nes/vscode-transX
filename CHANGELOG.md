@@ -1,9 +1,7 @@
 # Change Log
 
-All notable changes to the "transX" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- [v 0.0.1] 支持翻译及翻译替换功能，引擎支持有道翻译
 
 ## [Unreleased]
 
-- Initial release
+- 支持默认可用的翻译引擎，目前考虑微软

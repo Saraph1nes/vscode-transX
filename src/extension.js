@@ -1,7 +1,7 @@
 const vscode = require('vscode');
-const { registerTranslate } = require('./src/commands/translate');
-const { registerTranslateAndReplace } = require('./src/commands/translateAndReplace');
-const { changeConfiguration } = require('./src/workspace/configChange');
+const { registerTranslate } = require('./commands/translate');
+const { registerTranslateAndReplace } = require('./commands/translateAndReplace');
+const { changeConfiguration } = require('./workspace/configChange');
 
 /**
  * @param {vscode.ExtensionContext} context

@@ -1,9 +1,9 @@
 {
-  "name": "transX",
-  "displayName": "transX",
+  "name": "translationX",
+  "displayName": "translationX",
   "keywords": [
     "翻译X",
-    "transX",
+    "translationX",
     "翻译"
   ],
   "publisher": "Saraph1nes",
@@ -12,6 +12,9 @@
   "engines": {
     "vscode": "^1.54.0"
   },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "categories": [],
   "main": "./extension.js",
   "contributes": {

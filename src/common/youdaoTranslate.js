@@ -33,9 +33,6 @@ const youdaoTranslate = async (word) => {
         signType: 'v3',
         curtime,
     }
-
-    console.log('data', data);
-
     return request({
         url: 'https://openapi.youdao.com/api',
         method: 'POST',

@@ -1,4 +1,6 @@
 const vscode = require('vscode');
+const youdaoTranslate = require('../common/youDaoTranslate');
+const { splitWords, containsChinese, convertSentenceToCaseFormats } = require('../utils');
 
 let registerTranslateAndReplace = vscode.commands.registerCommand(
     'translatex.translateAndReplace',
@@ -9,14 +11,19 @@ let registerTranslateAndReplace = vscode.commands.registerCommand(
             let selection = editor.selection;
             let selectedText = editor.document.getText(selection);
 
-            console.log(selectedText);
 
-            // let outputChannel = vscode.window.createOutputChannel('Custom Panel');
-            // outputChannel.appendLine('This is a custom panel message.');
-            // outputChannel.show();
+            const spWord = splitWords(selectedText);
 
-            let options = ['Option 1', 'Option 2', 'Option 3'];
-            let selectedOption = await vscode.window.showQuickPick(options);
+            let { data: {
+                translation
+            } } = await youdaoTranslate(spWord)
+
+            // 如果翻译结果中包含中文，则为中译英，则将翻译结果转换为各种命名格式
+            if (containsChinese(spWord)) {
+                translation = convertSentenceToCaseFormats(translation[0]);
+            }
+
+            let selectedOption = await vscode.window.showQuickPick(translation);
 
             vscode.window.showInformationMessage('selectedOption: ' + selectedOption);
 

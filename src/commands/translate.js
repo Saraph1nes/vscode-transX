@@ -1,4 +1,6 @@
 const vscode = require('vscode');
+const { splitWords } = require('../utils');
+const youdaoTranslate = require("../common/youDaoTranslate");
 
 let registerTranslate = vscode.commands.registerCommand(
     'translatex.translate',
@@ -9,7 +11,14 @@ let registerTranslate = vscode.commands.registerCommand(
             let selection = editor.selection;
             let selectedText = editor.document.getText(selection);
             let outputChannel = vscode.window.createOutputChannel('翻译结果');
-            outputChannel.appendLine(`This is a custom panel message. ${selectedText}`);
+
+            const spWord = splitWords(selectedText);
+
+            const { data: {
+                translation
+            } } = await youdaoTranslate(spWord)
+
+            outputChannel.appendLine(`翻译结果：${translation}`);
             outputChannel.show();
         }
     }

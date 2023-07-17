@@ -1,6 +1,7 @@
 # 插件说明
 
 > 本项目开源，方便的话给个star吧，谢谢
+> 
 > https://github.com/Saraph1nes/vscode-transX
 
 ## 特性

@@ -25,16 +25,20 @@
         "translationX.engine": {
           "order": 1,
           "scope": "window",
+          "default": "youdaoFree",
           "type": "string",
           "enum": [
+            "youdaoFree",
             "youdao",
             "microsoft"
           ],
           "enumItemLabels": [
+            "有道免费版",
             "有道翻译",
             "微软翻译"
           ],
           "enumDescriptions": [
+            "有道免费版引擎",
             "有道翻译引擎",
             "微软翻译引擎"
           ],

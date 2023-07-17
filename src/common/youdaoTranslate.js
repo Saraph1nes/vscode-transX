@@ -33,7 +33,7 @@ const youdaoTranslate = async (word) => {
         signType: 'v3',
         curtime,
     }
-    return request({
+    const res = await request({
         url: 'https://openapi.youdao.com/api',
         method: 'POST',
         headers: {
@@ -41,6 +41,7 @@ const youdaoTranslate = async (word) => {
         },
         data
     })
+    return res.data.translation;
 }
 
 module.exports = youdaoTranslate;

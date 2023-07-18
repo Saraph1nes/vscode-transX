@@ -17,12 +17,8 @@ let registerTranslateAndReplace = vscode.commands.registerCommand(
 
             let selectedOption = '';
 
-            console.log('translation: ' + translation);
-
-            console.log('containsChinese(spWord)', containsChinese(spWord));
-
             // 如果翻译结果中包含中文，则为中译英，则将翻译结果转换为各种命名格式
-            if (containsChinese(spWord)) { 
+            if (containsChinese(spWord)) {
                 selectedOption = await vscode.window.showQuickPick(convertSentenceToCaseFormats(translation));
             } else {
                 selectedOption = await vscode.window.showQuickPick([translation]);

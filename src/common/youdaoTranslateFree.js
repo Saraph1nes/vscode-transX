@@ -1,6 +1,10 @@
 const request = require("../request");
-const vscode = require('vscode');
 
+/**
+ * 
+ * @param {*} word string
+ * @returns string
+ */
 const youdaoTranslateFree = async (word) => {
     const res = await request({
         url: `https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i=${word}`,

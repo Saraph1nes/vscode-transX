@@ -15,6 +15,10 @@ const signWithSHA256 = (translationId, input, salt, curTime, appSecret) => {
     return sha256.toString(CryptoJS.enc.Hex);
 }
 
+/**
+ * @param {*} word string
+ * @returns string
+ */
 const youdaoTranslate = async (word) => {
     const {
         translationId,
@@ -41,7 +45,7 @@ const youdaoTranslate = async (word) => {
         },
         data
     })
-    return res.data.translation;
+    return res.data.translation[0];
 }
 
 module.exports = youdaoTranslate;

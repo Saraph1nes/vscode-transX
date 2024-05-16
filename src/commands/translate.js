@@ -14,6 +14,8 @@ let registerTranslate = vscode.commands.registerCommand(
 
             const spWord = splitWords(selectedText);
 
+            console.log("分词 =>", selectedText, spWord);
+
             const translation = await multiEngineAdapter(spWord)
 
             outputChannel.appendLine(`翻译结果：${translation}`);

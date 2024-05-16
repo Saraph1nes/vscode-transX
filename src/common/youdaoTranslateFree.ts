@@ -1,11 +1,6 @@
 import request from "../utils/request";
 
-/**
- *
- * @param {*} word string
- * @returns string
- */
-const youdaoTranslateFree = async (word) => {
+const youdaoTranslateFree = async (word: string) => {
   const res = await request({
     url: `https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i=${word}`,
     method: "GET",

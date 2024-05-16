@@ -4,13 +4,19 @@ import CryptoJS from "crypto-js";
 
 import { randomUUID } from "crypto";
 
-const handleInput = (q) => {
+const handleInput = (q: string) => {
   const len = q.length;
   if (len <= 20) return q;
   return q.substring(0, 10) + len + q.substring(len - 10, len);
 };
 
-const signWithSHA256 = (translationId, input, salt, curTime, appSecret) => {
+const signWithSHA256 = (
+  translationId: string,
+  input: string,
+  salt: string,
+  curTime: number,
+  appSecret: string
+) => {
   const signStr = translationId + input + salt + curTime + appSecret;
   const sha256 = CryptoJS.SHA256(signStr);
   return sha256.toString(CryptoJS.enc.Hex);
@@ -20,7 +26,7 @@ const signWithSHA256 = (translationId, input, salt, curTime, appSecret) => {
  * @param {*} word string
  * @returns string
  */
-const youdaoTranslate = async (word) => {
+const youdaoTranslate = async (word: string) => {
   const { translationId, translationKey } =
     vscode.workspace.getConfiguration("translationX");
   const salt = randomUUID();

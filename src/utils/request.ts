@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
-const request = (options) => {
+const request = (options: AxiosRequestConfig): Promise<AxiosResponse> => {
   return new Promise((resolve, reject) => {
     const { url, method, headers, data } = options;
 

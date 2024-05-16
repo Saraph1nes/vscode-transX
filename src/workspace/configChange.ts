@@ -1,7 +1,7 @@
-import vscode from "vscode";
+import vscode, { WorkspaceConfiguration } from "vscode";
 
 let changeConfiguration = vscode.workspace.onDidChangeConfiguration(() => {
-  const { engine, translationId, translationKey } =
+  const { engine, translationId, translationKey }: WorkspaceConfiguration =
     vscode.workspace.getConfiguration("translationX");
 
   if (engine === "youdao") {

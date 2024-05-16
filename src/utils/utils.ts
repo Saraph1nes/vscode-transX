@@ -1,19 +1,19 @@
-const splitWords = (str) => {
+const splitWords = (str: string) => {
   // 使用正则表达式将横线、下划线和驼峰拼接的字符串切分为单词数组
   const words = str.split(/[-_]|(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])/);
   // 返回使用空格分开的单词字符串
   return words.join(" ");
 };
 
-const containsChinese = (str) => {
+const containsChinese = (str: string) => {
   return /[\u4e00-\u9fa5]/.test(str);
 };
 
-const convertSentenceToCaseFormats = (sentence) => {
+const convertSentenceToCaseFormats = (sentence: string) => {
   // 小驼峰
   const camelCase = sentence
     .toLowerCase()
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word: string, index: number) => {
       return index === 0 ? word.toLowerCase() : word.toUpperCase();
     })
     .replace(/\s+/g, "");

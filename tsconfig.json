@@ -1,0 +1,31 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "outDir": "out",
+        "allowJs": false,
+        "checkJs": false,
+        "removeComments": false,
+        "noEmit": false,
+        "noEmitOnError": false,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "target": "ES2019",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "noImplicitOverride": true,
+        "noUnusedLocals": true,
+        "resolveJsonModule": true,
+        "useUnknownInCatchVariables": false,
+        "typeRoots": [
+            "./types",
+            "./node_modules/@types"
+        ]
+    },
+    "types": [
+        "jest"
+    ]
+}

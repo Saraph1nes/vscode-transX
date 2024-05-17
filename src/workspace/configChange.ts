@@ -7,11 +7,8 @@ let changeConfiguration = vscode.workspace.onDidChangeConfiguration(() => {
   if (engine === "youdao") {
     console.log("使用有道翻译", translationId, translationKey);
   }
-  if (engine === "youdaoFree") {
-    console.log("使用有道翻译免费");
-  }
-  if (engine === "microsoft") {
-    console.log("使用微软翻译");
+  if (engine === "baiduDomain") {
+    console.log("使用百度领域翻译", translationId, translationKey);
   }
 });
 

@@ -11,14 +11,13 @@ const handleInput = (q: string) => {
 };
 
 const signWithSHA256 = (
-  APPID: string,
+  APISecret: string,
   input: string,
   salt: string,
-  curTime: number,
-  APISecret: string
+  domain: string,
+  appSecret: string
 ) => {
-  // 应用ID+input+salt+curtime+应用密钥
-  const signStr = APPID + input + salt + curTime + APISecret;
+  const signStr = APISecret + input + salt + domain + appSecret;
   const sha256 = CryptoJS.SHA256(signStr);
   return sha256.toString(CryptoJS.enc.Hex);
 };
@@ -27,37 +26,39 @@ const signWithSHA256 = (
  * @param {*} word string
  * @returns string
  */
-const youdaoTranslate = async (word: string) => {
-  const { APPID, APISecret } =
+const baiduDomainTranslate = async (word: string) => {
+  const { APISecret, APIKey } =
     vscode.workspace.getConfiguration("translationX");
   const salt = randomUUID();
-  const curtime = Math.round(new Date().getTime() / 1000);
 
   const data = {
     q: word,
     from: "AUTO",
-    to: "zh-CHS",
-    appKey: APPID,
+    to: "zh",
+    appid: APISecret,
     salt: salt,
+    domain: "it",
     sign: signWithSHA256(
-      APPID,
+      APISecret,
       handleInput(word),
       salt,
-      curtime,
-      APISecret
+      "it",
+      APIKey
     ),
-    signType: "v3",
-    curtime,
   };
+
   const res = await request({
-    url: "https://openapi.youdao.com/api",
+    url: `https://fanyi-api.baidu.com/api/trans/vip/fieldtranslate`,
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     data,
   });
-  return res.data.translation[0];
+
+  console.log("res =>", res.data);
+
+  return res.data.trans_result[0].dst;
 };
 
-export default youdaoTranslate;
+export default baiduDomainTranslate;

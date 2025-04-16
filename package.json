@@ -1,4 +1,5 @@
 {
+  "type": "commonjs",
   "name": "translationX",
   "icon": "images/icon.jpg",
   "displayName": "translationX",
@@ -9,7 +10,7 @@
   ],
   "publisher": "Saraph1nes",
   "description": "开源极简易用的翻译插件",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.54.0"
   },
@@ -25,36 +26,39 @@
         "translationX.engine": {
           "order": 1,
           "scope": "window",
-          "default": "youdaoFree",
+          "default": "youdao",
           "type": "string",
           "enum": [
-            "youdaoFree",
             "youdao",
-            "microsoft"
+            "xunfei"
           ],
           "enumItemLabels": [
-            "有道免费版",
             "有道翻译",
-            "微软翻译"
+            "讯飞翻译"
           ],
           "enumDescriptions": [
-            "有道免费版引擎",
-            "有道翻译引擎",
-            "微软翻译引擎"
+            "有道翻译引擎(需填写APPID、APISecret)",
+            "讯飞翻译引擎(需填写APPID、APISecret、APIKey)"
           ],
-          "description": "选择翻译引擎"
+          "description": "请选择翻译引擎"
         },
-        "translationX.translationId": {
+        "translationX.APPID": {
           "order": 2,
           "scope": "window",
           "type": "string",
-          "description": "应用ID"
+          "description": "应用ID（APPID）"
         },
-        "translationX.translationKey": {
+        "translationX.APISecret": {
           "order": 3,
           "scope": "window",
           "type": "string",
-          "description": "应用秘钥"
+          "description": "应用密钥（APISecret）"
+        },
+        "translationX.APIKey": {
+          "order": 4,
+          "scope": "window",
+          "type": "string",
+          "description": "应用密钥（APIKey）"
         }
       }
     },
@@ -87,37 +91,25 @@
     "contribEditorContentMenu"
   ],
   "scripts": {
-    "tsc": "tsc src/index.ts",
-    "dev": "rimraf dist && rollup -c rollup.config.ts -w",
-    "build": "rimraf dist && rollup -c rollup.config.ts",
+    "dev": "tsc -w",
+    "build": "tsc",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "node ./test/runTest.js",
-    "publish": "vsce package",
-    "vscode:prepublish": "npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
-    "esbuild": "npm run esbuild-base -- --sourcemap",
-    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch"
+    "publish": "vsce package"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.24.5",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^25.0.7",
     "@types/crypto-js": "^4.2.2",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
-    "@types/node": "20.2.5",
+    "@types/node": "^22.14.1",
+    "@types/qs": "^6.9.15",
     "@types/vscode": "^1.54.0",
     "@vscode/test-electron": "^2.3.2",
-    "esbuild": "^0.18.11",
     "eslint": "^8.57.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "rimraf": "^5.0.7",
-    "rollup": "^4.17.2",
-    "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.6.2",
     "typescript": "^5.4.5"
   },
@@ -127,6 +119,7 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "crypto-js": "^4.2.0"
+    "crypto-js": "^4.2.0",
+    "qs": "^6.12.1"
   }
 }

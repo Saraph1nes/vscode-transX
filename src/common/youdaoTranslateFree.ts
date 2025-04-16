@@ -2,7 +2,7 @@ import request from "../utils/request";
 
 const youdaoTranslateFree = async (word: string) => {
   const res = await request({
-    url: `https://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i=${word}`,
+    url: `https://youdao.com/result?word=123123${word}`,
     method: "GET",
   });
   return res.data.translateResult[0][0].tgt;

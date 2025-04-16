@@ -1,17 +1,17 @@
 import vscode, { WorkspaceConfiguration } from "vscode";
 
 let changeConfiguration = vscode.workspace.onDidChangeConfiguration(() => {
-  const { engine, translationId, translationKey }: WorkspaceConfiguration =
+  const { engine, APISecret, APIKey }: WorkspaceConfiguration =
     vscode.workspace.getConfiguration("translationX");
 
   if (engine === "youdao") {
-    console.log("使用有道翻译", translationId, translationKey);
+    console.log("使用有道翻译", APISecret, APIKey);
   }
-  if (engine === "youdaoFree") {
-    console.log("使用有道翻译免费");
+  if (engine === "baiduDomain") {
+    console.log("使用百度领域翻译", APISecret, APIKey);
   }
-  if (engine === "microsoft") {
-    console.log("使用微软翻译");
+  if (engine === "xunfei") {
+    console.log("使用讯飞翻译", APISecret, APIKey);
   }
 });
 
